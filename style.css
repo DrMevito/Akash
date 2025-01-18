@@ -204,6 +204,9 @@ section {
   justify-content: center;
   align-items: center;
 }
+.main-bottom .btn a{
+  width: 100%;
+}
 .main-bottom .btn button{
   background-color:#ff6500;
   border: none;
