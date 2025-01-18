@@ -300,8 +300,8 @@ border-top: 1px solid grey;
 border-top: 1px solid grey;
 }
 .hero-2 .Overview .text .btn a{
-  width: 50%;
-  background-color:;
+  width: 100%;
+  background-color:red;
 }
 .hero-2 .Overview .text .btn a button{
   width:100%;
