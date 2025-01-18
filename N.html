@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Header Highlight</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background: #444;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .section {
+            height: 100vh;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .header-item {
+            display: inline-block;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .highlight {
+            color: yellow; /* Highlight color */
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <h1>
+            <span class="header-item" id="item-section1">Section 1</span>
+            <span class="header-item" id="item-section2">Section 2</span>
+            <span class="header-item" id="item-section3">Section 3c</span>
+            <span class="header-item" id="item-section4">Section 4b</span>
+        </h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#section1">Section 1</a></li>
+            <li><a href="#section2">Section 2</a></li>
+            <li><a href="#section3">Section 3</a></li>
+            <li><a href="#section4">Section 4</a></li>
+        </ul>
+    </nav>
+    <section id="section1" class="section">Section 1 Content</section>
+    <section id="section2" class="section">Section 2 Content</section>
+    <section id="section3" class="section">Section 3 Content</section>
+    <section id="section4" class="section">Section 4 Content</section>
+
+    <script>
+        document.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const headerItems = document.querySelectorAll('.header-item');
+
+            let currentSection = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            // Reset all header items to default color
+            headerItems.forEach(item => {
+                item.classList.remove('highlight');
+            });
+
+            // Highlight the current section in the header
+            const activeItem = document.getElementById(`item-${currentSection}`);
+            if (activeItem) {
+                activeItem.classList.add('highlight');
+            }
+        });
+    </script>
+</body>
+</html>
